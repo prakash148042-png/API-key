@@ -1,1 +1,23 @@
-API key = '12345678'
+# 1. Name of the workflow
+name: My First Workflow
+
+# 2. Trigger: Run this whenever there is a 'push' to the main branch
+on:
+  push:
+    branches: [ "main" ]
+
+# 3. What to do
+jobs:
+  build-and-greet:
+    # Use the latest version of Ubuntu Linux
+    runs-on: ubuntu-latest
+
+    # The list of tasks
+    steps:
+      # Step A: Check out your code so the runner can access it
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step B: Run a simple script
+      - name: Say Hello
+        run: echo "The workflow is running successfully!"
